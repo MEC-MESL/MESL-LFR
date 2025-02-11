@@ -1,6 +1,7 @@
 void drive(float driveValue) {
-  uint8_t leftPWM = 127 - driveValue * 127;
-  uint8_t rightPWM = 127 + driveValue * 127;
+  uintt_t power = min(127, basePower);
+  uint8_t leftPWM = (1.0F - driveValue) * basePower;
+  uint8_t rightPWM = (1.0F - driveValue) * basePower;
 
   digitalWrite(leftMotorPins[0], 0);
   digitalWrite(leftMotorPins[1], 1);
@@ -14,20 +15,14 @@ void drive(float driveValue) {
 
 
 void sprint(float driveValue) {
-  uint8_t leftPWM;
-  uint8_t rightPWM;
+  uint8_t leftPWM = 255;
+  uint8_t rightPWM = 255;
 
-  if (driveValue == 0) {
-    leftPWM = 255;
-    rightPWM = 255;
-  }
   if (driveValue < 0) {
-    rightPWM = 255;
-    leftPWM = 255 - driveValue * 127;
+    leftPWM = (1.0F - abs(driveValue)) * 255;
   }
   else {
-    rightPWM = 255 - driveValue * 127;
-    leftPWM = 255;
+    rightPWM = (1.0F - abs(driveValue)) * 255;
   }
 
   drive(driveValue);
@@ -37,7 +32,7 @@ void sprint(float driveValue) {
 }
 
 
-void brake(bool hard) {
+void brake(bool hard = false) {
   digitalWrite(leftMotorPins[0], hard);
   digitalWrite(leftMotorPins[1], hard);
 
@@ -55,6 +50,6 @@ void spin(bool left) {
   digitalWrite(rightMotorPins[0], !left);
   digitalWrite(rightMotorPins[1], left);
 
-  analogWrite(leftMotorPins[2], 127);
-  analogWrite(rightMotorPins[2], 127);
+  analogWrite(leftMotorPins[2], basePower);
+  analogWrite(rightMotorPins[2], basePower);
 }
