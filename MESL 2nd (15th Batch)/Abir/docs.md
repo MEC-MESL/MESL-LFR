@@ -25,11 +25,11 @@ We decided to stick with esp32 rather than arduino (reason? its capabilities). S
 
 ### Learnings
 > Q. Can vin port of esp provide 5v?
-```
+
 As far as we all know vin port only took input voltage to turn on esp32. While uploading code to esp, we noticed an unusual phenomena. Buck converter , motor driver & boost converter all somehow turned on. When we measured the voltage at each point, we got 5v at both point of buck converter. The motor driver started operating the motor also.
 
-Gist: Vin port also supply 5v not only it takes input
-```
+`Gist`: Vin port also supply 5v not only it takes input
+
 
 ## Next steps??
 - a more polished circuit
