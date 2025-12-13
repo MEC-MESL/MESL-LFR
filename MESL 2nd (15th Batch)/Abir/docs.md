@@ -4,7 +4,7 @@ This project started with a simple idea of some curious minds & a long wished dr
 But let's not rush. Let's all calm down & start from the very beginning. After all enthusiasts gather around it's time for figuring out necessary equipments.
 
 #### What do you need to make a LFR?
-- a microcontroller (arduino, esp32 etc.)
+- a development board (arduino, esp32 etc.)
 - sensor 
 - motor 
 - battery
@@ -12,7 +12,7 @@ But let's not rush. Let's all calm down & start from the very beginning. After a
 - wheels
 - wires (^-^)
 
-## Phase 1 (7 Dec-11 Dec)
+## Phase 1: Initial Prototype (7 Dec-11 Dec)
 Our target was to build a minimalistic bot which do nothing but follow a simple line (that means no sharp edges, no zigzag patter, no mind wobbling track).
 
 We decided to stick with esp32 rather than arduino (reason? its capabilities). Some notable instruments would be:
@@ -30,7 +30,7 @@ As far as we all know vin port only took input voltage to turn on esp32. While u
 
 `Gist`: Vin port also supply 5v not only it takes input
 
-
+> Esp32 doesnot have `analogWrite()` rather `ledcWrite()` 
 ## Next steps??
 - a more polished circuit
 - better motor & wheel
